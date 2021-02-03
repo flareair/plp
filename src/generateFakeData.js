@@ -5,7 +5,7 @@ let counter = 0
 
 const data = []
 
-while(counter < 100) {
+while(counter < 48) {
     let product = {
         id: faker.random.uuid(),
         name: faker.commerce.productName(),
