@@ -13,20 +13,30 @@ const views = {
 
 function App() {
   const [view, setView] = useState(views.regular)
-  const [itemsPerRow, setItemsPerRow] = useState(4)
+  const [itemsPerRow, setItemsPerRow] = useState(6)
+  const [showInfo, setShowInfo] = useState(true)
 
-  const changeView = (newView) => {
-    console.log(newView)
-    setView(newView)
+  const optionsProps = {
+    setView,
+    setItemsPerRow,
+    itemsPerRow,
+    showInfo,
+    setShowInfo
+  }
+
+  const regularViewProps = {
+    data,
+    itemsPerRow,
+    showInfo
   }
 
   return (
     <div className="App">
-      <Options change={changeView}/>
+      <Options {...optionsProps} />
       
       {
         {
-          'regular': <RegularView data={data} itemsPerRow={itemsPerRow} />
+          'regular': <RegularView {...regularViewProps} />
         }[view]
       }
     </div>
