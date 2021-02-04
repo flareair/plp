@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import './App.css';
-import { Switcher } from './plp/Switcher'
+import { Options } from './plp/Options'
 import { RegularView } from './plp/RegularView'
 import data from './fakeData.json'
 
@@ -13,6 +13,7 @@ const views = {
 
 function App() {
   const [view, setView] = useState(views.regular)
+  const [itemsPerRow, setItemsPerRow] = useState(4)
 
   const changeView = (newView) => {
     console.log(newView)
@@ -21,11 +22,11 @@ function App() {
 
   return (
     <div className="App">
-      <Switcher change={changeView}/>
+      <Options change={changeView}/>
       
       {
         {
-          'regular': <RegularView data={data}/>
+          'regular': <RegularView data={data} itemsPerRow={itemsPerRow} />
         }[view]
       }
     </div>
